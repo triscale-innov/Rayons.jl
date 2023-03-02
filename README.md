@@ -44,13 +44,22 @@ Producing the following contour plot of arrival times as well as the shortest pa
 
 ![](docs/min_traj_source_1.png)
 
+This case is super simple because the velocity of the walls is super small. In such case, only reflected rays are significant.
+The following animation illustrates the arrival times through the maze :
+
+![](docs/maze_source_1.gif)
+
 A second example corresponds to a wall with two holes :
 
 ```julia
 julia> include("go_test1.jl")
 ````
 
-![](docs/two_holes_min_traj_source_1.png
+![](docs/two_holes_min_traj_source_1.png)
 
+In this case both reflected and refracted rays must be considered.
 
+he following animation illustrates the arrival times through the maze :
+
+![](docs/two_holes_source_1.gif)
 

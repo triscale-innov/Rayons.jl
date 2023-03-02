@@ -288,11 +288,11 @@ function plot_mintimes(fm::FaceMesh,tmax,withcontour=true)
     fig,ax
 end
 
-function plot_animated_mintimes(outdir,source_name,source_center,fms,cmg::CartesianMaterialGrid)
+function plot_animated_mintimes(outdir,source_name,source_center,fms,cmg::CartesianMaterialGrid,tmax)
     @show source_name,source_center
     fm = fms[source_name]
     fig = Figure(resolution=(1200,1050))
-    ax = Axis(fig[1, 1],rightspinevisible = false, xlabel="x",ylabel="y")
+    ax = Makie.Axis(fig[1, 1],rightspinevisible = false, xlabel="x",ylabel="y")
     ax.aspect = DataAspect()
     xlims!(ax,fm.xfaces[begin],1.05*fm.xfaces[end])
     nlevels=40
@@ -306,6 +306,7 @@ function plot_animated_mintimes(outdir,source_name,source_center,fms,cmg::Cartes
     cm=[RGBAf(c.r, c.g, c.b, 1.0) for c in to_colormap(:lightrainbow)]
 
     minMT,maxMT = extrema_skip_NaNs(rmt)
+    maxMT = min(maxMT,tmax)
 
     levels= collect(range(minMT, maxMT, length=nlevels))
     tightlimits!(ax) 
@@ -440,7 +441,7 @@ function animate_mintimes(outdir,source_name,fm::FaceMesh,cmg::CartesianMaterial
     
   
     fig = Figure(resolution=(800,800))
-    ax = Axis(fig[1, 1],rightspinevisible = false, xlabel="x",ylabel="y")
+    ax = Makie.Axis(fig[1, 1],rightspinevisible = false, xlabel="x",ylabel="y")
 
     min_times=[NaN for i ∈ 1:nx, j ∈ 1:ny]
     threshold=0.001

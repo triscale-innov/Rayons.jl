@@ -383,7 +383,7 @@ function rayons_fast(fname::String,numerical_parameters::NumericalParameters,for
             observation_trajectories = get_ray_trajectories(model,face_meshes,source_point,observation_points,numerical_parameters,celerity_domain)
             # observation_trajectories = get_ray_trajectories(model,face_meshes,observation_points,numerical_parameters,celerity_domain,isx,isy)
             plot_all(outdir,source_name,source_center,face_meshes,observation_points,observation_trajectories,cmg,numerical_parameters.tmax)
-            # plot_animated_mintimes(outdir,source_name,source_center,face_meshes,cmg)
+            plot_animated_mintimes(outdir,source_name,source_center,face_meshes,cmg,numerical_parameters.tmax)
             # animate_mintimes(outdir,source_name,face_meshes[source_name],cmg)
         end
 
