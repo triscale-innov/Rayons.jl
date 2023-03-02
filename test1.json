@@ -1,0 +1,101 @@
+{
+  "material_properties": [
+    {
+      "name": "Steel",
+      "density": 7900,
+      "longitudinal_velocity": 3100,
+      "transversal_velocity": 3100
+    },
+    {
+      "name": "Water",
+      "density": 1000,
+      "longitudinal_velocity": 100,
+      "transversal_velocity": 100
+    } 
+  ],
+  "name": "Square1",
+  "bounding_box": {
+    "sw": [
+      -1.0001,
+      -1.0001
+    ],
+    "ne": [
+      1.0001,
+      1.0001
+    ]
+  },
+  "sensors": [
+    [
+      "right_up",
+      0.999,
+      0.5
+    ],
+    [
+      "right_middle",
+      0.999,
+      0.0
+    ],
+    [
+      "right_down",
+      0.999,
+      -0.5
+    ]
+  ],
+  "rects": [
+    {
+      "name": "ExtSquare",
+      "material": "Steel",
+      "sw": [
+        -1.0,
+        -1.0
+      ],
+      "ne": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "topwall",
+      "material": "Water",
+      "sw": [
+        -0.1,
+        0.42
+      ],
+      "ne": [
+        0.1,
+        1.0
+      ]
+    },
+    {
+      "name": "midwall",
+      "material": "Water",
+      "sw": [
+        -0.1,
+        -0.4
+      ],
+      "ne": [
+        0.1,
+        0.4
+      ]
+    },
+    {
+      "name": "bottwall",
+      "material": "Water",
+      "sw": [
+        -0.1,
+        -1.0
+      ],
+      "ne": [
+        0.1,
+        -0.42
+      ]
+    }
+
+  ],
+  "sources": [
+    [
+      -1.0,
+      0.0
+    ]
+  ]
+}

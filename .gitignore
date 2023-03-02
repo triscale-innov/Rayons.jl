@@ -1,0 +1,9 @@
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+*.jld2
+*.png
+*.dylib
+*.json
+/deps/deps.jl
+/docs/build
