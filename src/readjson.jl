@@ -1,5 +1,5 @@
 using Rayons
-using JSON
+ using JSON
 using CairoMakie.GeometryBasics: Polygon,Point2f
 using Colors
 
@@ -116,14 +116,8 @@ end
 
 function color_map()
     cm = Dict(
-        "huile"=>colorant"lightyellow",
-        "acier"=>colorant"steelblue",
-        "fer"=>colorant"lightsteelblue",
-        "cuivre"=>colorant"peru",
-        "carton"=>colorant"gray",
-        "unknown"=>colorant"black",
-        "cirmag"=>colorant"lightsteelblue",
-        "cuve"=>colorant"steelblue"
+        "Water"=>colorant"white",
+        "Steel"=>colorant"steelblue"
     )
 end
 
@@ -133,8 +127,6 @@ function get_material_color(material_name)
     c = haskey(cm,mn) ? cm[mn] : colorant"lightgreen"
     c
 end
-
-
 
 function draw_material_grid(cmg::CartesianMaterialGrid)
     (xs,ys) = (cmg.xnodes,cmg.ynodes)
@@ -153,8 +145,6 @@ function draw_material_grid(cmg::CartesianMaterialGrid)
         end
     end
 
-    # cm=color_map()
-    # mcolors = [cm[lowercase(cmg.materials[i])] for i ∈ colors_indexes]
     mcolors = [get_material_color(cmg.materials[i]) for i ∈ colors_indexes]
 
     @show mcolors
@@ -164,10 +154,4 @@ function draw_material_grid(cmg::CartesianMaterialGrid)
         axis = (; aspect = DataAspect(), title = "Cartesian Material Grid"))
 end
 
-
-# fname="US_GeoGmsh_2DXY_1E05Hz.json"
-# jdata=load(fname)
-# rectangles=getRectangles(jdata)
-# cmg=CartesianMaterialGrid(jdata)
-# draw_material_grid(cmg)
 

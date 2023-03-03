@@ -7,8 +7,8 @@ struct Rect
     ymax::Int
 end
 
-
-function rectangles_from_png(filename)
+# Create a json input file (rectangles, materials, source, sensors) from a maze png image
+function maze_rectangles_from_png(filename)
     img = Images.load(filename)
     nx,ny=size(img)
     f(i,j) = img[i,j] == RGBA(1.0,1.0,1.0,1.0) ? RGBA(1.0,1.0,1.0,1.0) : RGBA(0.0,0.0,0.0,0.0)
@@ -35,7 +35,6 @@ function rectangles_from_png(filename)
             imin = i
             jmin = j
 
-            ii = imin
             imax = imin
             while imax <nx && bool_matrix[imax,jmin] 
                 imax +=1
@@ -43,17 +42,12 @@ function rectangles_from_png(filename)
             imax <= nx && (imax=imax-1)
             
             line_ok(j) = all(i-> bool_matrix[i,j],imin:imax)
-            # @show bool_matrix[imin:imax,jmin]
-             # return 
             jj = jmin
-            # @show  line_ok(jmin) 
             while (jj <= ny) && line_ok(jj) 
                 jj +=1
             end
 
             jmax = min(jj,ny)
-            @show imin,jmin,imax,jmax
-
             push!(rectangles,Rect(imin-1,jmin-1,imax+1,jmax+1))
         end
     end

@@ -4,7 +4,8 @@ using CairoMakie
 
 function go_maze()
 
-    Rayons.rectangles_from_png("maze.png")
+    # Create maze.json from maze.png
+    Rayons.maze_rectangles_from_png("maze.png")
 
     fontsize_theme = Theme(fontsize = 30)
     set_theme!(fontsize_theme)

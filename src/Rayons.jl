@@ -2,7 +2,7 @@ module Rayons
 
 using LinearAlgebra
 
-include("rectangles_from_png.jl")
+include("maze_rectangles_from_png.jl")
 include("unit_to_string.jl")
 include("numericalParameters.jl")
 include("material_properties.jl")

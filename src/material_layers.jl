@@ -49,17 +49,7 @@ struct Layer
     height::Float64
 end
 
-function getlayers()
-    layers = [
-        Layer("fer",0.02),
-        Layer("huile",0.03),
-        Layer("carton",0.005),
-        Layer("cuivre",0.02),
-        Layer("carton",0.005),
-        Layer("huile",0.03),
-        Layer("acier",0.005)
-        ]
-end
+
 
 
 

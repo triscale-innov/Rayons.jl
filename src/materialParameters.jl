@@ -136,66 +136,6 @@ function read_material_parameters(jdata)
 end
 
 
-function getTestMaterialParameters()
-    materialParams=[
-    #
-    # materialParametersFromEν3D("acier",210.e9,0.27,7850), #ν=0.27 => cₗ = 5781.7
-    # materialParametersFromEν3D("carton",11.e9,0.3,600),
-    # materialParametersFromEν3D("cuivre",128.e9,0.33,8920),
-    # materialParametersFromEν3D("fer",208.e9,0.21,7860),
-    # liquidParametersFromρμc2D("huile",900.,0.001,1000)
 
-    #Andreas parameters
-    #materialParametersFromctclρ3D(name,ct,cl,ρ)
-    materialParametersFromclctρ2D("acier",5900,3230,7700), #ν=0.27 => cₗ = 5781.7
-    materialParametersFromclctρ2D("carton",2300,1100,600),
-    materialParametersFromclctρ2D("cuivre",3600,2100,8920),
-    # materialParametersFromclctρ2D("cuivre",10000,2100,8920),
-    materialParametersFromclctρ2D("fer",5900,3230,7700),
-    materialParametersFromclctρ2D("huile",1400,0,1000)
-    # liquidParametersFromρμc2D("huile",1000.,0.001,1400)
-
-
-    # materialParametersFromEν2D("acier",210.e9,0.27,7850), #ν=0.27 => cₗ = 5781.7
-    # materialParametersFromEν2D("carton",11.e9,0.3,600),
-    # materialParametersFromEν2D("cuivre",128.e9,0.33,8920),
-    # materialParametersFromEν2D("fer",208.e9,0.21,7860),
-    # liquidParametersFromρμc2D("huile",900.,0.001,1000)
-    ]
-
-    dump_material(materialParams)
-
-    return materialParams
-end
-
-function getFluidifiedTestMaterialParameters()
-    ct_fluid = 0.1
-    materialParams=[
-        materialParametersFromclctρ3D("acier",5900,3230,7700),
-        materialParametersFromclctρ3D("carton",2300,ct_fluid,600),
-        materialParametersFromclctρ3D("cuivre",3600,ct_fluid,8920),
-        materialParametersFromclctρ3D("fer",5900,ct_fluid,7700),
-        materialParametersFromclctρ3D("huile",1400,ct_fluid,1000)
-    ]
-    dump_material(materialParams)
-
-    return materialParams
-end
-
-function getHomogeneousFluidTestMaterialParameters()
-    ct_fluid = 0.1
-    cl_fluid = 1400.0
-    rho_fluid = 2000.0
-    materialParams=[
-        materialParametersFromclctρ3D("acier",5900,3230,7700),
-        materialParametersFromclctρ3D("carton",cl_fluid,ct_fluid,rho_fluid),
-        materialParametersFromclctρ3D("cuivre",cl_fluid,ct_fluid,rho_fluid),
-        materialParametersFromclctρ3D("fer",cl_fluid,ct_fluid,rho_fluid),
-        materialParametersFromclctρ3D("huile",cl_fluid,ct_fluid,rho_fluid)
-    ]
-    dump_material(materialParams)
-
-    return materialParams
-end
 
 
