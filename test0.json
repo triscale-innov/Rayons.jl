@@ -1,0 +1,76 @@
+{
+  "material_properties": [
+    {
+      "name": "Fast",
+      "density": 7900,
+      "longitudinal_velocity": 1000,
+      "transversal_velocity": 1000
+    },
+    {
+      "name": "Slow",
+      "density": 1000,
+      "longitudinal_velocity": 100,
+      "transversal_velocity": 100
+    } 
+  ],
+  "name": "Square1",
+  "bounding_box": {
+    "sw": [
+      -1.0001,
+      -1.0001
+    ],
+    "ne": [
+      1.0001,
+      1.0001
+    ]
+  },
+  "sensors": [
+    [
+      "right_up",
+      0.999,
+      0.5
+    ],
+    [
+      "right_middle",
+      0.999,
+      0.0
+    ],
+    [
+      "right_down",
+      0.999,
+      -0.5
+    ]
+  ],
+  "rects": [
+    {
+      "name": "ExtSquare",
+      "material": "Fast",
+      "sw": [
+        -1.0,
+        -1.0
+      ],
+      "ne": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "L1",
+      "material": "Slow",
+      "sw": [
+        -0.3,
+        -1.0
+      ],
+      "ne": [
+        0.3,
+        1.0
+      ]
+    }
+  ],
+  "sources": [
+    [
+      -1.0,
+      0.0
+    ]
+  ]
+}
