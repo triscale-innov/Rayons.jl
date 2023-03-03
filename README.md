@@ -35,19 +35,42 @@ end
 ```
 Note how different **reduction** functions (`reduce_ray!`) can be passed to the recursive function. In particular, we can pass a function computing the minimal arrival time of a given ray into each cell of a 2D Cartesian grid.
 
-A first example corresponding to a maze can be launched via the following script
+The first example is a simple geometry where the ray source is placed to the left in a fast material (v=1000). A layer of slow material (v=100) is placed in the middle and we place 3 sensors on the right.
+
+The input file `test0.json` describe this geometry :
+
+```json
+{
+  "material_properties": [
+    {"name": "Fast","density": 7900,"longitudinal_velocity": 1000,"transversal_velocity": 1000},
+    {"name": "Slow","density": 1000,"longitudinal_velocity": 100,"transversal_velocity": 100} 
+  ],
+  "name": "Square1",
+  "bounding_box": {"sw": [-1.0001,-1.0001],"ne": [1.0001,1.0001]},
+  "sensors": [ 
+    ["right_up",0.999,0.5],["right_middle",0.999,0.0],["right_down",0.999,-0.5]
+  ],
+  "rects": [
+    {"name": "ExtSquare","material": "Fast","sw": [-1.0,-1.0],"ne": [1.0,1.0]},
+    {"name": "L1","material": "Slow","sw": [-0.3,-1.0],"ne": [0.3,1.0]}
+  ],
+  "sources": [ [-1.0,0.0]]
+}
+```
+The following command launch the computation
 
 ```julia
-julia> include("go_maze.jl")
+julia> include("go_test0.jl")
 ````
 Producing the following contour plot of arrival times as well as the shortest path from the source to the sensor placed at the opposite side of the maze :
 
-![](docs/min_traj_source_1.png)
+![](docs/test0_min_traj_source_1.png)
 
-This case is super simple because the velocity of the walls is super small. In such case, only reflected rays are significant.
+This case is simple and only refracted rays are significant.
 The following animation illustrates the arrival times through the maze :
 
-![](docs/maze_source_1.gif)
+![](docs/test0_source_1.gif)
+
 
 A second example corresponds to a wall with two holes :
 
@@ -62,4 +85,20 @@ In this case both reflected and refracted rays must be considered.
 he following animation illustrates the arrival times through the maze :
 
 ![](docs/two_holes_source_1.gif)
+
+
+A last example corresponding to a maze can be launched via the following script
+
+```julia
+julia> include("go_maze.jl")
+````
+Producing the following contour plot of arrival times as well as the shortest path from the source to the sensor placed at the opposite side of the maze :
+
+![](docs/min_traj_source_1.png)
+
+This case is super simple because the velocity of the walls is super small. In such case, only reflected rays are significant.
+The following animation illustrates the arrival times through the maze :
+
+![](docs/maze_source_1.gif)
+
 
